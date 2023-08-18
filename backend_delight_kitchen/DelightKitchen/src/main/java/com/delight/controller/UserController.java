@@ -1,5 +1,5 @@
 
-package com.app.controller;
+package com.delight.controller;
 
 import java.time.LocalDateTime;
 
@@ -8,9 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class HomePageController {
+public class UserController {
 
-	public HomePageController() {
+	public UserController() {
     
 		System.out.println("in ctor of "+getClass());
 
