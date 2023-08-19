@@ -21,7 +21,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 3893c23 (All entities Added)
 @Setter
 @Getter
 @AllArgsConstructor
@@ -41,10 +44,18 @@ public class Orders {
 	@ManyToOne
 	@JoinColumn(name = "orderTableId")
 	private Tables orderTable;
+<<<<<<< HEAD
+
+	@OneToMany(mappedBy = "orderItemOrder", cascade = CascadeType.REMOVE)
+	private List<OrderItem> ordersItemList;
+
+	@OneToOne(mappedBy = "billOrder", cascade = CascadeType.REMOVE)
+=======
 	
 	@OneToMany(mappedBy = "orderItemOrder",cascade = CascadeType.REMOVE)
 	private List<OrderItem> ordersItemList;
 	
 	@OneToOne(mappedBy = "billOrder",cascade = CascadeType.REMOVE)
+>>>>>>> 3893c23 (All entities Added)
 	private Bill OrderBill;
 }

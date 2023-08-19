@@ -28,8 +28,12 @@ public class OrderItem {
 	@ManyToOne
 	@JoinColumn(name = "orderItemProductId")
 	private Product orderItemProduct;
+<<<<<<< HEAD
+
+=======
 	
 	
 	
 	
+>>>>>>> 3893c23 (All entities Added)
 }

@@ -13,7 +13,11 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
+<<<<<<< HEAD
+@Data // @data = @Getter @Setter @RequiredArgsConstructor @ToString @EqualsAndHashCode
+=======
 @Data  // @data =  @Getter @Setter @RequiredArgsConstructor @ToString @EqualsAndHashCode
+>>>>>>> 3893c23 (All entities Added)
 @Entity
 @Table(name = "bill")
 public class Bill {
@@ -33,8 +37,12 @@ public class Bill {
 	@ManyToOne
 	@JoinColumn(name = "billCashierId")
 	private Users billCashier;
+<<<<<<< HEAD
+
+=======
 	
 	
 	
 	
+>>>>>>> 3893c23 (All entities Added)
 }

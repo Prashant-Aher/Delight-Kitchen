@@ -27,9 +27,16 @@ public class Tables {
 	@ManyToOne
 	@JoinColumn(name = "waiterId")
 	private Users waiter;
+<<<<<<< HEAD
+	@OneToMany(mappedBy = "orderTable", cascade = CascadeType.REMOVE)
+	List<Orders> ordersList;
+	private String tableStatus;
+
+=======
 	@OneToMany(mappedBy = "orderTable",cascade = CascadeType.REMOVE)
 	List<Orders> ordersList;
 	private String tableStatus;
 	
 	
+>>>>>>> 3893c23 (All entities Added)
 }
