@@ -11,18 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
 
 	public UserController() {
-    
-		System.out.println("in ctor of "+getClass());
+
+		System.out.println("in ctor of " + getClass());
 
 	}
-	
-  @RequestMapping("/") 
-  public String showHomePage(Model map)  {
-	  System.out.println("on show home page");
-	  map.addAttribute("server_ts",LocalDateTime.now());
-	  return "/index";
-	  
-	    }
-  
+
+	@RequestMapping("/")
+	public String showHomePage(Model map) {
+		System.out.println("on show home page");
+		map.addAttribute("server_ts", LocalDateTime.now());
+		return "/index";
+
+	}
 
 }

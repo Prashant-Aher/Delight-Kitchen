@@ -23,14 +23,12 @@ public class Product {
 	private int productId;
 	private String productName;
 	private float productPrice;
-	
 
 	@ManyToOne
 	@JoinColumn(name = "productcategoryId")
 	private Category category;
-	private String productStatus="Enabled";
-	@OneToMany(mappedBy = "orderItemProduct",cascade = CascadeType.REMOVE)
+	private String productStatus = "Enabled";
+	@OneToMany(mappedBy = "orderItemProduct", cascade = CascadeType.REMOVE)
 	List<OrderItem> ordersItemList;
 
-	
 }
