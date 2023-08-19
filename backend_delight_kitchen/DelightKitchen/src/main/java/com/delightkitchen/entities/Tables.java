@@ -1,4 +1,4 @@
-package com.delight.entities;
+package com.delightkitchen.entities;
 
 import java.sql.Date;
 import java.util.List;
