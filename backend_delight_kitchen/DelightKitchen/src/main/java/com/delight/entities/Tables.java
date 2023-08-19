@@ -27,9 +27,8 @@ public class Tables {
 	@ManyToOne
 	@JoinColumn(name = "waiterId")
 	private Users waiter;
-	@OneToMany(mappedBy = "orderTable",cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "orderTable", cascade = CascadeType.REMOVE)
 	List<Orders> ordersList;
 	private String tableStatus;
-	
-	
+
 }
