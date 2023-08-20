@@ -2,11 +2,15 @@ package com.delightkitchen.utils;
 
 import org.springframework.stereotype.Component;
 
+import com.delightkitchen.dtos.OrderItemDTO;
+import com.delightkitchen.dtos.OrdersDTO;
 import com.delightkitchen.dtos.ProductDTO;
 import com.delightkitchen.dtos.ProductDTOSend;
 import com.delightkitchen.dtos.TablesDTO;
 import com.delightkitchen.dtos.UserDTO;
 import com.delightkitchen.dtos.UserDTOSend;
+import com.delightkitchen.entities.OrderItem;
+import com.delightkitchen.entities.Orders;
 import com.delightkitchen.entities.Product;
 import com.delightkitchen.entities.Tables;
 import com.delightkitchen.entities.Users;
@@ -100,6 +104,67 @@ public class DtoEntityConverter {
 			tables.setWaiter(new Users(tablesDTO.getWaiterId()));
 
 		return tables;
+
+	}
+
+	public OrdersDTO toOrderDTO(Orders orders) {
+		if (orders == null)
+			return new OrdersDTO(0);
+
+		OrdersDTO ordersDTO = new OrdersDTO();
+
+		ordersDTO.setOrderId(orders.getOrderId());
+		ordersDTO.setOrderStatus(orders.getOrderStatus());
+		ordersDTO.setOrderServicePersonId(orders.getOrderServicePerson().getUserId());
+		ordersDTO.setOrderTableId(orders.getOrderTable().getTableId());
+		ordersDTO.setOrderTableName(orders.getOrderTable().getTableName());
+		return ordersDTO;
+
+	}
+
+	public Orders toOrderEntity(OrdersDTO ordersDTO) {
+		if (ordersDTO == null)
+			return null;
+
+		Orders orders = new Orders();
+
+		orders.setOrderId(ordersDTO.getOrderId());
+		orders.setOrderStatus(ordersDTO.getOrderStatus());
+		orders.setOrderServicePerson(new Users(ordersDTO.getOrderServicePersonId()));
+		orders.setOrderTable(new Tables(ordersDTO.getOrderTableId()));
+
+		return orders;
+
+	}
+
+	public OrderItem toOrderItemEntity(OrderItemDTO orderItemDTO) {
+		if (orderItemDTO == null)
+			return null;
+
+		OrderItem orderItem = new OrderItem();
+
+		orderItem.setOrderItemQuantity(orderItemDTO.getOrderItemQuantity());
+		orderItem.setOrderItemOrder(new Orders(orderItemDTO.getOrderItemOrderId()));
+		orderItem.setOrderItemProduct(new Product(orderItemDTO.getOrderItemProductId()));
+
+		return orderItem;
+
+	}
+
+	public OrderItemDTO toOrderItemDTO(OrderItem orderItem) {
+		if (orderItem == null)
+			return null;
+
+		OrderItemDTO orderItemDTO = new OrderItemDTO();
+
+		orderItemDTO.setOrderItemQuantity(orderItem.getOrderItemQuantity());
+		orderItemDTO.setOrderItemId(orderItem.getOrderItemId());
+		orderItemDTO.setOrderItemAmount(orderItem.getOrderItemAmount());
+		orderItemDTO.setOrderItemOrderId(orderItem.getOrderItemOrder().getOrderId());
+		orderItemDTO.setOrderItemProductId(orderItem.getOrderItemProduct().getProductId());
+		orderItemDTO.setOrderItemRate(orderItem.getOrderItemProduct().getProductPrice());
+		orderItemDTO.setOrderItemName(orderItem.getOrderItemProduct().getProductName());
+		return orderItemDTO;
 
 	}
 

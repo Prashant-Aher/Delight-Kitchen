@@ -1,6 +1,5 @@
 package com.delightkitchen.entities;
 
-import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,20 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-
-@Setter
-@Getter
-@AllArgsConstructor
-@ToString
-@NoArgsConstructor
-@EqualsAndHashCode
 @Entity
 @Table(name = "orders")
 public class Orders {
@@ -41,10 +26,67 @@ public class Orders {
 	@ManyToOne
 	@JoinColumn(name = "orderTableId")
 	private Tables orderTable;
-	
-	@OneToMany(mappedBy = "orderItemOrder",cascade = CascadeType.REMOVE)
+
+	@OneToMany(mappedBy = "orderItemOrder", cascade = CascadeType.REMOVE)
 	private List<OrderItem> ordersItemList;
-	
-	@OneToOne(mappedBy = "billOrder",cascade = CascadeType.REMOVE)
+
+	@OneToOne(mappedBy = "billOrder", cascade = CascadeType.REMOVE)
 	private Bill OrderBill;
+
+	public Orders() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Orders(int orderId) {
+		super();
+		this.orderId = orderId;
+	}
+
+	public Orders(int orderId, String orderStatus, Users orderServicePerson, Tables orderTable) {
+		super();
+		this.orderId = orderId;
+		this.orderStatus = orderStatus;
+		this.orderServicePerson = orderServicePerson;
+		this.orderTable = orderTable;
+	}
+
+	public int getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+
+	public Users getOrderServicePerson() {
+		return orderServicePerson;
+	}
+
+	public void setOrderServicePerson(Users orderServicePerson) {
+		this.orderServicePerson = orderServicePerson;
+	}
+
+	public Tables getOrderTable() {
+		return orderTable;
+	}
+
+	public void setOrderTable(Tables orderTable) {
+		this.orderTable = orderTable;
+	}
+
+	@Override
+	public String toString() {
+		return "Orders [orderId=" + orderId + ", orderStatus=" + orderStatus + ", orderServicePerson="
+				+ orderServicePerson + ", orderTable=" + orderTable + ", ordersItemList=" + ordersItemList
+				+ ", OrderBill=" + OrderBill + "]";
+	}
+
 }
