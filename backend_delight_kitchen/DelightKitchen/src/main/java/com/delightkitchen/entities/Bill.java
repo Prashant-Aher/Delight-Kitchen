@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
-@Data  // @data =  @Getter @Setter @RequiredArgsConstructor @ToString @EqualsAndHashCode
+@Data // @data = @Getter @Setter @RequiredArgsConstructor @ToString @EqualsAndHashCode
 @Entity
 @Table(name = "bill")
 public class Bill {
@@ -33,8 +33,5 @@ public class Bill {
 	@ManyToOne
 	@JoinColumn(name = "billCashierId")
 	private Users billCashier;
-	
-	
-	
-	
+
 }
