@@ -25,13 +25,6 @@ public class DtoEntityConverter {
 		users.setRole(userDTO.getRole());
 		users.setCurrentStatus(userDTO.getCurrentStatus());
 
-//		if(userDTO.getProfileImage()!=null)
-//		{
-//			
-//			users.setProfileImage(userDTO.getProfileImage().getOriginalFilename());
-//		
-//		}
-
 		return users;
 
 	}
@@ -46,7 +39,6 @@ public class DtoEntityConverter {
 		userDTO.setPhone(user.getPhone());
 		userDTO.setRole(user.getRole());
 		userDTO.setCurrentStatus(user.getCurrentStatus());
-//		userDTO.setProfileImage(user.getProfileImage());
 		userDTO.setCreatedDate(user.getDate());
 
 		return userDTO;
@@ -61,7 +53,6 @@ public class DtoEntityConverter {
 		product.setProductName(productDTO.getProductName());
 		product.setProductPrice(productDTO.getProductPrice());
 		product.setProductStatus(productDTO.getProductStatus());
-		product.setCategory(new Category(productDTO.getProductcategoryId()));
 
 		return product;
 	}
