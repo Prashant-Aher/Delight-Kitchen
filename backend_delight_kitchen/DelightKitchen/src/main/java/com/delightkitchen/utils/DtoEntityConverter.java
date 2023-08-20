@@ -4,10 +4,11 @@ import org.springframework.stereotype.Component;
 
 import com.delightkitchen.dtos.ProductDTO;
 import com.delightkitchen.dtos.ProductDTOSend;
+import com.delightkitchen.dtos.TablesDTO;
 import com.delightkitchen.dtos.UserDTO;
 import com.delightkitchen.dtos.UserDTOSend;
-import com.delightkitchen.entities.Category;
 import com.delightkitchen.entities.Product;
+import com.delightkitchen.entities.Tables;
 import com.delightkitchen.entities.Users;
 
 @Component
@@ -68,6 +69,38 @@ public class DtoEntityConverter {
 		productDTOSend.setProductcategoryId(product.getCategory().getCategoryId());
 		productDTOSend.setProductcategoryName(product.getCategory().getCategoryName());
 		return productDTOSend;
+	}
+
+	public TablesDTO toTablesDTO(Tables tables) {
+		if (tables == null)
+			return null;
+		TablesDTO tablesDTO = new TablesDTO();
+		tablesDTO.setTableId(tables.getTableId());
+		tablesDTO.setTableName(tables.getTableName());
+		tablesDTO.setTableStatus(tables.getTableStatus());
+		tablesDTO.setTableCapacity(tables.getTableCapacity());
+		if (tables.getWaiter() != null)
+			tablesDTO.setWaiterId(tables.getWaiter().getUserId());
+		if (tables.getWaiter() != null)
+			tablesDTO.setWaiterName(tables.getWaiter().getName());
+
+		return tablesDTO;
+
+	}
+
+	public Tables toTablesEntity(TablesDTO tablesDTO) {
+		if (tablesDTO == null)
+			return null;
+		Tables tables = new Tables();
+		tables.setTableId(tablesDTO.getTableId());
+		tables.setTableName(tablesDTO.getTableName());
+		tables.setTableStatus(tablesDTO.getTableStatus());
+		tables.setTableCapacity(tablesDTO.getTableCapacity());
+		if (tablesDTO.getWaiterId() != 0)
+			tables.setWaiter(new Users(tablesDTO.getWaiterId()));
+
+		return tables;
+
 	}
 
 }
