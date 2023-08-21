@@ -14,6 +14,11 @@ import com.delightkitchen.entities.Orders;
 import com.delightkitchen.entities.Product;
 import com.delightkitchen.entities.Tables;
 import com.delightkitchen.entities.Users;
+import com.delightkitchen.dtos.BillDTO;
+import com.delightkitchen.dtos.BillDTOSend;
+import com.delightkitchen.entities.Bill;
+import com.delightkitchen.dtos.CategoryDTO;
+import com.delightkitchen.entities.Category;
 
 @Component
 public class DtoEntityConverter {
@@ -168,4 +173,57 @@ public class DtoEntityConverter {
 
 	}
 
+	public CategoryDTO toCategoryDTO(Category category) {
+		if (category == null)
+			return null;
+		return new CategoryDTO(category.getCategoryId(), category.getCategoryName(), category.getCategoryStatus());
+	}
+
+	public Category toCategoryEntity(CategoryDTO categoryDto) {
+		if (categoryDto == null)
+			return null;
+		return new Category(categoryDto.getCategoryId(), categoryDto.getCategoryName(),
+				categoryDto.getCategoryStatus());
+	}
+
+	public BillDTOSend toBillDTO(Bill bill) {
+		if (bill == null)
+			return null;
+
+		BillDTOSend billDTO = new BillDTOSend();
+		billDTO.setTaxAndCharge(bill.getTaxAndCharge());
+		billDTO.setDiscount(bill.getDiscount());
+		billDTO.setBillAmount(bill.getBillAmount());
+		billDTO.setBillTotal(bill.getBillTotal());
+		billDTO.setBillDate(bill.getBillDate());
+		billDTO.setBillPaymentMethod(bill.getBillPaymentMethod());
+		billDTO.setBillStatus(bill.getBillStatus());
+		billDTO.setBillId(bill.getBillId());
+		billDTO.setBillOrderId(bill.getBillOrder().getOrderId());
+		if (bill.getBillCashier() != null)
+			billDTO.setBillCashierName(bill.getBillCashier().getName());
+		billDTO.setWaiterName(bill.getBillOrder().getOrderServicePerson().getName());
+		billDTO.setTableName(bill.getBillOrder().getOrderTable().getTableName());
+		billDTO.setTableId(bill.getBillOrder().getOrderTable().getTableId());
+		return billDTO;
+	}
+
+	public Bill toBillEntity(BillDTO billDTO) {
+		if (billDTO == null)
+			return null;
+
+		Bill bill = new Bill();
+		bill.setTaxAndCharge(billDTO.getTaxAndCharge());
+		bill.setDiscount(billDTO.getDiscount());
+		bill.setBillAmount(billDTO.getBillAmount());
+		bill.setBillTotal(billDTO.getBillTotal());
+		bill.setBillDate(billDTO.getBillDate());
+		bill.setBillPaymentMethod(billDTO.getBillPaymentMethod());
+		bill.setBillStatus(billDTO.getBillStatus());
+		if (billDTO.getBillCashierId() != 0)
+			bill.setBillCashier(new Users(billDTO.getBillCashierId()));
+		if (billDTO.getBillOrderId() != 0)
+			bill.setBillOrder(new Orders(billDTO.getBillOrderId()));
+		return bill;
+	}
 }
