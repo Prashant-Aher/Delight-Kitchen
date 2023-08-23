@@ -71,7 +71,7 @@ const LoginFunction=()=>
         </div>
         <hr/>
         <div >
-    <h2>Log In</h2>
+    <h2></h2>
     <form > 
 
     <div className="form-outline mb-4">
