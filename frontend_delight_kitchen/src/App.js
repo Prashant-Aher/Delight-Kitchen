@@ -18,6 +18,11 @@ const AuthorizeLogin = () => {
   return loginStatus == '1' ? <Home /> : <Login />
 }
 
+const AuthorizeHome = () => {
+  const loginStatus = sessionStorage['loginStatus']
+  return loginStatus == '1' ? <Home /> : <Login />
+}
+
 function App() {
   return (
     <div>
@@ -25,6 +30,8 @@ function App() {
         <Routes>
           <Route path="/" element={<AuthorizeUser />} />
           <Route path="/login" element={<AuthorizeLogin />} />
+          <Route path="/home" element={<AuthorizeHome />}/>
+
         </Routes>
       </BrowserRouter>
       <ToastContainer theme="colored" />

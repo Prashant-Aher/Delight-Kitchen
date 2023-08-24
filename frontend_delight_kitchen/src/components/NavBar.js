@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../css/NavBar.css'
+//import '../css/NavBar.css'
 const NavBar = (props) => {
     const name=sessionStorage['name'];
    
@@ -12,10 +12,8 @@ const NavBar = (props) => {
             <ul className="social-media-desktop">
                 <li>
                     <p >{name}</p>
-                </li>
-               
+                </li>              
             </ul>
-
          </div>
     </nav>
     </>
