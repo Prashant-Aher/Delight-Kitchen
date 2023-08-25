@@ -4,13 +4,14 @@ import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { URL } from '../config';
 import '../css/Login.css'
-
+//The necessary modules are imported. These include React, the useState hook, useNavigate from react-router, toast from react-toastify, axios for making API requests, and some custom imports for URLs and CSS.
 
 
 const Login = () => {
 
 const[email,setEmail]=useState("");
 const[password,setPassword]=useState("");
+//Two state variables, email and password, are defined using the useState hook to store the values entered in the email and password input fields.
 
 const navigate = useNavigate()  // Navigation function from React Router
 
@@ -58,7 +59,10 @@ const LoginFunction=()=>
       }
      
 }
-
+//The LoginFunction is defined, which is intended to be called when the "Login" button is clicked.
+//This function checks for valid email and password inputs and, if valid, sends a POST request to a login API endpoint using Axios.
+//If the login is successful (result['status'] is 'success'), user data is stored in the sessionStorage, a success toast is displayed, and the user is navigated to the '/home' route.
+//If the login fails, an error toast is displayed.
 
   return (
    
@@ -94,7 +98,8 @@ const LoginFunction=()=>
         </div>
     </div>
 </div>
-
+//The email and password fields are controlled by the useState variables.
+//The "Login" button triggers the LoginFunction when clicked.
    
   )
 }
