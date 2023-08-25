@@ -1,11 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './css/SideBar.css';
-//import './App.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import Home from './pages/Home';
 import Login from './pages/Login';
-
+import User from './pages/User';
 
 
 const AuthorizeUser = () => {
@@ -20,7 +19,12 @@ const AuthorizeLogin = () => {
 
 const AuthorizeHome = () => {
   const loginStatus = sessionStorage['loginStatus']
-  return loginStatus == '1' ? <Home /> : <Login />
+  return loginStatus == '1' ? <Home /> : <Home/>
+}
+
+const AuthorizeUsers = () => {
+  const loginStatus = sessionStorage['loginStatus']
+  return loginStatus == '1' ? ((sessionStorage['role']=='manager')?<User />:<Home/> ) : <Login />
 }
 
 function App() {
@@ -31,6 +35,7 @@ function App() {
           <Route path="/" element={<AuthorizeUser />} />
           <Route path="/login" element={<AuthorizeLogin />} />
           <Route path="/home" element={<AuthorizeHome />}/>
+          <Route path="/users" element={<AuthorizeUsers />} />
 
         </Routes>
       </BrowserRouter>
