@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import User from './pages/User';
 import Logout from './pages/Logout';
+import Bill from './pages/Bill';
+import Category from './pages/Category';
 
 
   const AuthorizeUser = () => {
@@ -33,6 +35,15 @@ const AuthorizeLogout = () => {
   return loginStatus == '1' ? <Logout /> : <Login />
 }
 
+const AuthorizeBill = () => {
+  const loginStatus = sessionStorage['loginStatus']
+  return loginStatus == '1' ? ((sessionStorage['role']=='manager'||sessionStorage['role']=='cashier')?<Bill />:<Home/> ) : <Login />
+}
+
+const AuthorizeCategory = () => {
+  const loginStatus = sessionStorage['loginStatus']
+  return loginStatus == '1' ? ((sessionStorage['role']=='manager'||sessionStorage['role']=='chef')?<Category />:<Home/> ): <Login />
+}
 
 function App() {
   return (
@@ -44,6 +55,9 @@ function App() {
           <Route path="/home" element={<AuthorizeHome />}/>
           <Route path="/users" element={<AuthorizeUsers />} />
           <Route path="/logout" element={<AuthorizeLogout />} />
+          <Route path="/bill" element={<AuthorizeBill />} />
+          <Route path="/category" element={<AuthorizeCategory />} />
+          
         </Routes>
       </BrowserRouter>
       <ToastContainer theme="colored" />
