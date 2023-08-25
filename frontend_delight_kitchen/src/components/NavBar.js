@@ -1,4 +1,5 @@
 import React from 'react'
+import "../css/NavBar.css";
 
 //import '../css/NavBar.css'
 const NavBar = (props) => {
@@ -11,7 +12,7 @@ const NavBar = (props) => {
          <div className="social-media">
             <ul className="social-media-desktop">
                 <li>
-                    <p >{name}</p>
+                    <p >Welcome {name}</p>
                 </li>              
             </ul>
          </div>
