@@ -48,7 +48,7 @@ const AuthorizeSetting = () => {
 
 const AuthorizeLogout = () => {
   const loginStatus = sessionStorage['loginStatus']
-  return loginStatus == '1' ? <Logout /> : <Login />
+  return loginStatus == '1' ? < Login/> : <Logout/>
 }
 
 function App() {
