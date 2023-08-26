@@ -76,14 +76,11 @@ function App() {
           <Route path="/category" element={<AuthorizeCategory />} />
           <Route path="/setting" element={<AuthorizeSetting/>} />
           <Route path="/logout" element={<AuthorizeLogout />} />
-<<<<<<< HEAD
           <Route path="/order" element={<AuthorizeOrders />} />
           <Route path="/orderchef" element={<AuthorizeOrdersChef />} />       
 
-=======
           <Route path="/product" element={<AuthorizeProduct />} />
        
->>>>>>> b61d704489e571aec2efcabb2c756c5766c26ddf
         </Routes>
       </BrowserRouter>
       <ToastContainer theme="colored" />
