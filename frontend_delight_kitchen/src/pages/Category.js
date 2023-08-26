@@ -5,6 +5,7 @@ import NavBar from "../components/NavBar";
 import SideBar from "../components/SideBar";
 import { URL } from "../config";
 import '../css/Category.css'
+//: Similar to the previous example, this section includes import statements for various modules, such as axios for making HTTP requests, useEffect and useState from React for managing component state, toast from "react-toastify" for displaying toast notifications, and some other components and CSS files.
 
 const Category=()=>
 {
@@ -12,6 +13,7 @@ const Category=()=>
     const [id, setId] = useState(0);
     const [name, setName] = useState("");
     const [category,setCategory]=useState([])
+//The component uses several pieces of state managed with the useState hook. These include id (for category ID), name (for category name), and category (for storing a list of categories).
 
 const getData=()=>
 {
@@ -24,6 +26,7 @@ const getData=()=>
     })
 
 }
+//The getData function fetches the list of categories using an HTTP GET request to the specified URL and updates the category state with the received data. This function is called using the useEffect hook when the component mounts
 
 const addData=()=>
 {
@@ -54,6 +57,7 @@ const addData=()=>
 
     
     })
+//addData: This function is responsible for adding a new category. It sends an HTTP POST request with the new category's name to the server. If successful, it shows a success toast notification, updates the category list, and if not, shows an error toast notification.
 
 }
 }
@@ -80,6 +84,7 @@ const updateData=()=>
     const body ={
     "categoryName":name
     }
+    //deleteData: This function deletes a category using an HTTP DELETE request based on the provided category ID. It then updates the category list.
   
     axios.put(`${URL}/categories/${id}`,body).then((response)=>
     {
@@ -95,9 +100,10 @@ const updateData=()=>
             toast.error("Unable to Update Data")
         }
  })
-}
+}//editData: This function prepares the state to edit a category. It sets the id and name states based on the category's details.
+ //updateData: This function updates a category's data. It sends an HTTP PUT request with the updated category name to the server. Upon success, it displays a success toast notification and updates the category list.
 
-const updateStatus=(status,id)=>
+ const updateStatus=(status,id)=>
 {
 
     if(status=="Enabled")
@@ -127,7 +133,7 @@ const updateStatus=(status,id)=>
         })
     }
 }
-
+//updateStatus: This function toggles the status of a category between "Enabled" and "Disabled" using an HTTP PATCH request. It updates the category list afterward.git 
     useEffect(getData,[])
 
    
@@ -245,5 +251,4 @@ const updateStatus=(status,id)=>
 
     </div></SideBar>
 };
-
 export default Category;

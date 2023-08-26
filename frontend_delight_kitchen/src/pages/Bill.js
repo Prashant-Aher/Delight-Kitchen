@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar";
 import SideBar from "../components/SideBar";
 import { URL } from "../config";
 import '../css/Bill.css'
+// This section includes the necessary imports for the component, such as axios for making HTTP requests, useEffect and useState from React for managing component state, and the import of some other components and CSS files.
 
 const Bill=()=>
 {
@@ -21,6 +22,7 @@ const Bill=()=>
   const[discountValue,setDiscountValue]=useState(0.0)
   const[taxValue,setTaxValue]=useState(0.0)
   const[paymentMethod,setPaymentMethod]=useState("")
+  //The component uses several pieces of state, each managed using the useState hook. These include billData (to store a list of bills), various state variables for managing individual bill details (billId, orderId, tableId, etc.), as well as states for storing calculated values (total, totalTax, amount, discount, etc.).
   
   const userId= sessionStorage['userId']
 
@@ -49,7 +51,7 @@ const Bill=()=>
         setBillById(result.data)
         getOrderItem(orderId)
        
-
+//he getData function is called using the useEffect hook when the component mounts. It makes an HTTP GET request to fetch a list of bills from the specified URL and updates the billData state with the received data.
   
       })
   
