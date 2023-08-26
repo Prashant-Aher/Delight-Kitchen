@@ -11,6 +11,7 @@ import Setting from './pages/Setting';
 import Logout from './pages/Logout';
 import Product from './pages/Product';
 import Orders from './pages/Orders';
+import Tables from './pages/Tables';
 import OrdersChef from './pages/OrdersChef';
 
 
@@ -56,7 +57,10 @@ const AuthorizeProduct = () => {
   const loginStatus = sessionStorage['loginStatus']
   return loginStatus == '1' ? ((sessionStorage['role']=='manager'||sessionStorage['role']=='chef')?<Product />:<Home/> ) : <Login />
 }
-
+const AuthorizeTables = () => {
+  const loginStatus = sessionStorage['loginStatus']
+  return loginStatus == '1' ? ((sessionStorage['role']=='manager')?<Tables />:<Home/> ) : <Login />
+}
 const AuthorizeOrders = () => {
   const loginStatus = sessionStorage['loginStatus']
   return loginStatus == '1' ? ((sessionStorage['role']=='manager'||sessionStorage['role']=='waiter')?<Orders />:<Home/> ): <Login />
@@ -77,6 +81,7 @@ function App() {
           <Route path="/users" element={<AuthorizeUsers />} />
           <Route path="/bill" element={<AuthorizeBill />} />
           <Route path="/category" element={<AuthorizeCategory />} />
+          <Route path="/tables" element={<AuthorizeTables />} />
           <Route path="/setting" element={<AuthorizeSetting/>} />
           <Route path="/logout" element={<AuthorizeLogout />} />
           <Route path="/order" element={<AuthorizeOrders />} />
