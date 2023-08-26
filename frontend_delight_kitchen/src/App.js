@@ -9,6 +9,7 @@ import Bill from './pages/Bill';
 import Category from './pages/Category';
 import Setting from './pages/Setting';
 import Logout from './pages/Logout';
+import Product from './pages/Product';
 
   const AuthorizeUser = () => {
   const loginStatus = sessionStorage['loginStatus']
@@ -39,7 +40,6 @@ const AuthorizeCategory = () => {
   const loginStatus = sessionStorage['loginStatus']
   return loginStatus == '1' ? ((sessionStorage['role']=='manager'||sessionStorage['role']=='chef')?<Category />:<Home/> ): <Login />
 }
-
 const AuthorizeSetting = () => {
   const loginStatus = sessionStorage['loginStatus']
   return loginStatus == '1' ? <Setting /> : <Login />
@@ -47,7 +47,11 @@ const AuthorizeSetting = () => {
 
 const AuthorizeLogout = () => {
   const loginStatus = sessionStorage['loginStatus']
-  return loginStatus == '1' ? <Logout /> : <Login />
+  return loginStatus == '1' ? < Login/> : <Logout/>
+}
+const AuthorizeProduct = () => {
+  const loginStatus = sessionStorage['loginStatus']
+  return loginStatus == '1' ? ((sessionStorage['role']=='manager'||sessionStorage['role']=='chef')?<Product />:<Home/> ) : <Login />
 }
 
 const AuthorizeOrders = () => {
@@ -72,9 +76,14 @@ function App() {
           <Route path="/category" element={<AuthorizeCategory />} />
           <Route path="/setting" element={<AuthorizeSetting/>} />
           <Route path="/logout" element={<AuthorizeLogout />} />
+<<<<<<< HEAD
           <Route path="/order" element={<AuthorizeOrders />} />
           <Route path="/orderchef" element={<AuthorizeOrdersChef />} />       
 
+=======
+          <Route path="/product" element={<AuthorizeProduct />} />
+       
+>>>>>>> b61d704489e571aec2efcabb2c756c5766c26ddf
         </Routes>
       </BrowserRouter>
       <ToastContainer theme="colored" />
