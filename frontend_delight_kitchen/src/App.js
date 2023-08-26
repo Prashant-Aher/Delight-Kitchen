@@ -10,6 +10,9 @@ import Category from './pages/Category';
 import Setting from './pages/Setting';
 import Logout from './pages/Logout';
 import Product from './pages/Product';
+import Orders from './pages/Orders';
+import OrdersChef from './pages/OrdersChef';
+
 
   const AuthorizeUser = () => {
   const loginStatus = sessionStorage['loginStatus']
@@ -47,7 +50,7 @@ const AuthorizeSetting = () => {
 
 const AuthorizeLogout = () => {
   const loginStatus = sessionStorage['loginStatus']
-  return loginStatus == '1' ? < Login/> : <Logout/>
+  return loginStatus == '1' ? <Logout /> : <Login />
 }
 const AuthorizeProduct = () => {
   const loginStatus = sessionStorage['loginStatus']
@@ -78,7 +81,6 @@ function App() {
           <Route path="/logout" element={<AuthorizeLogout />} />
           <Route path="/order" element={<AuthorizeOrders />} />
           <Route path="/orderchef" element={<AuthorizeOrdersChef />} />       
-
           <Route path="/product" element={<AuthorizeProduct />} />
        
         </Routes>
