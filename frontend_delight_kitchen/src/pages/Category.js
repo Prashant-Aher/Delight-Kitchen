@@ -251,3 +251,4 @@ const updateData=()=>
 
     </div></SideBar>
 };
+export default Category;
