@@ -35,7 +35,6 @@ const AuthorizeBill = () => {
   return loginStatus == '1' ? ((sessionStorage['role']=='manager'||sessionStorage['role']=='cashier')?<Bill />:<Home/> ) : <Login />
 }
 
-
 const AuthorizeCategory = () => {
   const loginStatus = sessionStorage['loginStatus']
   return loginStatus == '1' ? ((sessionStorage['role']=='manager'||sessionStorage['role']=='chef')?<Category />:<Home/> ): <Login />
@@ -51,6 +50,15 @@ const AuthorizeLogout = () => {
   return loginStatus == '1' ? <Logout /> : <Login />
 }
 
+const AuthorizeOrders = () => {
+  const loginStatus = sessionStorage['loginStatus']
+  return loginStatus == '1' ? ((sessionStorage['role']=='manager'||sessionStorage['role']=='waiter')?<Orders />:<Home/> ): <Login />
+}
+const AuthorizeOrdersChef = () => {
+  const loginStatus = sessionStorage['loginStatus']
+  return loginStatus == '1' ? ((sessionStorage['role']=='chef')?<OrdersChef />:<Home/> ): <Login />
+}
+
 function App() {
   return (
     <div>
@@ -64,7 +72,9 @@ function App() {
           <Route path="/category" element={<AuthorizeCategory />} />
           <Route path="/setting" element={<AuthorizeSetting/>} />
           <Route path="/logout" element={<AuthorizeLogout />} />
-       
+          <Route path="/order" element={<AuthorizeOrders />} />
+          <Route path="/orderchef" element={<AuthorizeOrdersChef />} />       
+
         </Routes>
       </BrowserRouter>
       <ToastContainer theme="colored" />
