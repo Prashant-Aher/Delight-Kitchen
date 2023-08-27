@@ -201,9 +201,8 @@ const updateStatus=(status,id)=>
        <input  value={name} onChange={(e)=>{setName(e.target.value)}} className="form-control" type="text" />
        <label style={{marginRight:"5px",marginTop:"5px"}} className="fs-5">Price: </label>
        <input value={price}  onChange={(e)=>{setPrice(e.target.value)}} className="form-control" type="text" />
-
-
        </form>
+       
       </div>
       <div className="modal-footer">
         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>

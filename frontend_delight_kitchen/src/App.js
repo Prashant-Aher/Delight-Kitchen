@@ -42,7 +42,7 @@ const AuthorizeBill = () => {
 
 const AuthorizeCategory = () => {
   const loginStatus = sessionStorage['loginStatus']
-  return loginStatus == '1' ? ((sessionStorage['role']=='manager'||sessionStorage['role']=='chef')?<Category />:<Home/> ): <Login />
+  return loginStatus == '1' ? ((sessionStorage['role']=='manager'||sessionStorage['role']=='chef')?<Category />:<Login/> ): <Login />
 }
 const AuthorizeSetting = () => {
   const loginStatus = sessionStorage['loginStatus']
