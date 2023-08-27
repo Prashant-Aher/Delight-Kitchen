@@ -20,7 +20,7 @@ useEffect(() => {
     sessionStorage['profileImage'] = null
     sessionStorage['role'] = null
     sessionStorage['loginStatus'] = 0
-    toast.success("Logged Out Successfully")
+    //toast.success("Logged Out Successfully")
     navigate('/login')
    
 //The useEffect hook is used to perform side effects when the component mounts. In this case, it's clearing user-related data from the sessionStorage object, displaying a success toast notification, and navigating to the '/login' route.
