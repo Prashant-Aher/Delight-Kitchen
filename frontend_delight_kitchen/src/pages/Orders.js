@@ -99,7 +99,7 @@ const Orders = () => {
     };
 
     axios.post(`${URL}/bill`, body).then((response) => {
-      // Do something with the response if needed
+      
     });
   };
 
