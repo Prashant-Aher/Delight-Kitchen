@@ -99,7 +99,10 @@ const Orders = () => {
     };
 
     axios.post(`${URL}/bill`, body).then((response) => {
+<<<<<<< HEAD
       
+=======
+>>>>>>> 6bed318283ae3d4ad01eecf48db5c095c9717305
     });
   };
 
